@@ -2,7 +2,7 @@
 
 import pygame
 
-from source import tools
+from source import tools,setup
 
 def main():
     game=tools.Game()

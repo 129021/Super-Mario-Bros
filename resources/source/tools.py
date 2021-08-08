@@ -5,8 +5,7 @@ import random
 
 class Game:
     def __init__(self):
-        pygame.init()
-        pygame.display.set_mode((800,600))
+
         self.screen=pygame.display.get_surface()
         self.clock=pygame.time.Clock()
 
