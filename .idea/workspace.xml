@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment=" unfixed error：&#10;  File &quot;D:\programs\Python\Super Mario Bros\source\tools.py&quot;, line 24, in run&#10;    image=get_image(GRAPHICS['mario_bros'],145,32,16,16,(0,0,0),5)&#10;KeyError: 'mario_bros'" />
+    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment=" unfixed error：&#10;  File &quot;D:\programs\Python\Super Mario Bros\source\tools.py&quot;, line 24, in run&#10;    image=get_image(GRAPHICS['mario_bros'],145,32,16,16,(0,0,0),5)&#10;KeyError: 'mario_bros'">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -187,7 +189,7 @@
       <workItem from="1628435835759" duration="888000" />
       <workItem from="1628436897394" duration="113000" />
       <workItem from="1628437068937" duration="725000" />
-      <workItem from="1628437810866" duration="326000" />
+      <workItem from="1628437810866" duration="437000" />
     </task>
     <task id="LOCAL-00001" summary="add some constants">
       <created>1628424675701</created>
