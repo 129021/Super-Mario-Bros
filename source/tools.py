@@ -20,8 +20,8 @@ class Game:
                     self.keys=pygame.key.get_pressed()
                 elif event.type==pygame.KEYUP:
                     self.keys=pygame.key.get_pressed()
-            self.screen.fill((random.radint(0,255),random.randint(0,255),random.randint(0,255)))
-            image= get_image(GRAPHICS['mario_bros'],145,32,16,16,(0,0,0),5)
+            self.screen.fill((random.randint(0,255),random.randint(0,255),random.randint(0,255)))
+            image=get_image(GRAPHICS['mario_bros'],145,32,16,16,(0,0,0),5)
             self.screen.blit(image,(300,300))
             pygame.display.update()
             self.clock.tick(60)
