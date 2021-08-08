@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment="Modify the folder level error:take out the source from resources">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/tools.py" afterDir="false" />
-    </list>
+    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment=" unfixed error：&#10;  File &quot;D:\programs\Python\Super Mario Bros\source\tools.py&quot;, line 24, in run&#10;    image=get_image(GRAPHICS['mario_bros'],145,32,16,16,(0,0,0),5)&#10;KeyError: 'mario_bros'" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +187,7 @@
       <workItem from="1628435835759" duration="888000" />
       <workItem from="1628436897394" duration="113000" />
       <workItem from="1628437068937" duration="725000" />
-      <workItem from="1628437810866" duration="35000" />
+      <workItem from="1628437810866" duration="326000" />
     </task>
     <task id="LOCAL-00001" summary="add some constants">
       <created>1628424675701</created>
@@ -213,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628437290297</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=" unfixed error：&#10;  File &quot;D:\programs\Python\Super Mario Bros\source\tools.py&quot;, line 24, in run&#10;    image=get_image(GRAPHICS['mario_bros'],145,32,16,16,(0,0,0),5)&#10;KeyError: 'mario_bros'">
+      <created>1628437940452</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1628437940452</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,14 +240,15 @@
     <MESSAGE value="add some constants" />
     <MESSAGE value="add def:Load and split Mario bros images" />
     <MESSAGE value="Modify the folder level error:take out the source from resources" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify the folder level error:take out the source from resources" />
+    <MESSAGE value=" unfixed error：&#10;  File &quot;D:\programs\Python\Super Mario Bros\source\tools.py&quot;, line 24, in run&#10;    image=get_image(GRAPHICS['mario_bros'],145,32,16,16,(0,0,0),5)&#10;KeyError: 'mario_bros'" />
+    <option name="LAST_COMMIT_MESSAGE" value=" unfixed error：&#10;  File &quot;D:\programs\Python\Super Mario Bros\source\tools.py&quot;, line 24, in run&#10;    image=get_image(GRAPHICS['mario_bros'],145,32,16,16,(0,0,0),5)&#10;KeyError: 'mario_bros'" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/main_py$tools.coverage" NAME="tools 覆盖结果" MODIFIED="1628436392104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/resources/source" />
     <SUITE FILE_PATH="coverage/main_py$constants.coverage" NAME="constants 覆盖结果" MODIFIED="1628437340881" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
     <SUITE FILE_PATH="coverage/main_py$sound.coverage" NAME="sound 覆盖结果" MODIFIED="1628437336596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
     <SUITE FILE_PATH="coverage/main_py$setup.coverage" NAME="setup 覆盖结果" MODIFIED="1628437356610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
-    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main 覆盖结果" MODIFIED="1628437817415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main 覆盖结果" MODIFIED="1628437890889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$tools__1_.coverage" NAME="tools (1) 覆盖结果" MODIFIED="1628437344303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
   </component>
 </project>
