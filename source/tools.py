@@ -27,11 +27,11 @@ class Game:
             self.clock.tick(60)
 
 
-def load_graphics(path,accept=('jpg','png','bmp','gif')):
+def load_graphics(path,accept=('.jpg','.png','.bmp','.gif')):
     graphics={}
     for pic in os.listdir(path):
         name,ext=os.path.splitext(pic)
-        if ext.lower()in accept:
+        if ext.lower() in accept:
             img=pygame.image.load(os.path.join(path,pic))
             if img.get_alpha():
                 img=img.convert_alpha()
@@ -44,7 +44,7 @@ def get_image(sheet,x,y,width,height,colorkey,scale):
     image=pygame.Surface((width,height))
     image.blit(sheet,(0,0),(x,y,width,height)) #0,0代表画到哪个位置,x,y,w,h代表sheet里哪个区域要被取出来
     image.set_colorkey(colorkey)
-    image=pygame.tranform.scale(image,(int(width*scale),int(height*scale)))
+    image=pygame.transform.scale(image,(int(width*scale),int(height*scale)))
     return image
 
 
