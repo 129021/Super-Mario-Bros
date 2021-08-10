@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment="add static cover">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/components/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/components/info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/states/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/states/main_menu.py" afterDir="false" />
-    </list>
+    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment="add some labels" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,7 +200,7 @@
       <workItem from="1628475211316" duration="892000" />
       <workItem from="1628507733708" duration="3218000" />
       <workItem from="1628584723192" duration="1645000" />
-      <workItem from="1628597239035" duration="3847000" />
+      <workItem from="1628597239035" duration="4205000" />
     </task>
     <task id="LOCAL-00001" summary="add some constants">
       <created>1628424675701</created>
@@ -249,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628510354805</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add some labels">
+      <created>1628610485794</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1628610485794</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +277,8 @@
     <MESSAGE value=" unfixed error：&#10;  File &quot;D:\programs\Python\Super Mario Bros\source\tools.py&quot;, line 24, in run&#10;    image=get_image(GRAPHICS['mario_bros'],145,32,16,16,(0,0,0),5)&#10;KeyError: 'mario_bros'" />
     <MESSAGE value="(1)fix the bug:&#10;module 'pygame' has no attribute 'tranfrom'&#10;(2)fix the bug:KeyError:mario_brosWrite &#10;reason:write .png as png(forget to write &quot;.&quot;)" />
     <MESSAGE value="add static cover" />
-    <option name="LAST_COMMIT_MESSAGE" value="add static cover" />
+    <MESSAGE value="add some labels" />
+    <option name="LAST_COMMIT_MESSAGE" value="add some labels" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/main_py$tools.coverage" NAME="tools 覆盖结果" MODIFIED="1628436392104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/resources/source" />
