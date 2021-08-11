@@ -1,5 +1,7 @@
 import pygame
 from .. import constants as C
+from . import coin
+
 
 pygame.font.init()
 
@@ -8,6 +10,8 @@ class Info:
         self.state=state
         self.create_state_labels()
         self.create_info_labels()
+        self.flash_coin=coin.FlashiingCoin()
+
 
     def create_state_labels(self):
         self.state_labels=[]
@@ -35,11 +39,12 @@ class Info:
         return label_image
 
     def update(self):
-        pass
+        self.flash_coin.update()
 
     def draw(self,surface):
         for label in self.state_labels:
             surface.blit(label[0],label[1])
         for label in self.info_labels:
             surface.blit(label[0],label[1])
+        surface.blit(self.flash_coin.image,self.flash_coin.rect)
 
