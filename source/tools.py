@@ -6,7 +6,6 @@ import os
 
 class Game:
     def __init__(self,state_dict,start_state):
-
         self.screen=pygame.display.get_surface()
         self.clock=pygame.time.Clock()
         self.keys=pygame.key.get_pressed()
@@ -20,10 +19,7 @@ class Game:
             self.state=self.state_dict[next_state]
         self.state.update(self.screen,self.keys)
 
-
-
     def run(self):
-
         while True:
             for event in pygame.event.get():
                 if event.type==pygame.QUIT:

@@ -6,6 +6,7 @@ class LoadScreen:
         self.finished=False
         self.next='level'
         self.timer=0
+        self.info=info.Info('load_screen')
 
     def update(self,surface,keys):
         self.draw(surface)
@@ -18,3 +19,4 @@ class LoadScreen:
 
     def draw(self,surface):
         surface.fill((0,0,0))
+        self.info.draw(surface)

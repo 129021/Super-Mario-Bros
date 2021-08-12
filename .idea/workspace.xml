@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment="make the cursor moving">
+    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment="add two new state">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/components/info.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/components/info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/components/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/components/player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/states/level.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/states/level.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/states/load_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/states/load_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/states/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/states/main_menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/tools.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,7 +211,8 @@
       <workItem from="1628645569417" duration="30000" />
       <workItem from="1628645681033" duration="438000" />
       <workItem from="1628680095342" duration="3422000" />
-      <workItem from="1628691821580" duration="2861000" />
+      <workItem from="1628691821580" duration="2919000" />
+      <workItem from="1628768112497" duration="5047000" />
     </task>
     <task id="LOCAL-00001" summary="add some constants">
       <created>1628424675701</created>
@@ -276,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628683535677</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add two new state">
+      <created>1628694785718</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1628694785718</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +313,8 @@
     <MESSAGE value="add some labels" />
     <MESSAGE value="Modify the local file name to the file name in the project:r'D:\programs\Python\Super Mario Bros\resources\fonts\Fixedsys500c.ttf'----&gt;'resources/fonts/Fixedsys500c.ttf'" />
     <MESSAGE value="make the cursor moving" />
-    <option name="LAST_COMMIT_MESSAGE" value="make the cursor moving" />
+    <MESSAGE value="add two new state" />
+    <option name="LAST_COMMIT_MESSAGE" value="add two new state" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/main_py$tools.coverage" NAME="tools 覆盖结果" MODIFIED="1628436392104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/resources/source" />
@@ -313,7 +322,7 @@
     <SUITE FILE_PATH="coverage/main_py$info.coverage" NAME="info 覆盖结果" MODIFIED="1628609927757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source/components" />
     <SUITE FILE_PATH="coverage/main_py$sound.coverage" NAME="sound 覆盖结果" MODIFIED="1628437336596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
     <SUITE FILE_PATH="coverage/main_py$setup.coverage" NAME="setup 覆盖结果" MODIFIED="1628437356610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
-    <SUITE FILE_PATH="coverage/__init___py$main.coverage" NAME="main 覆盖结果" MODIFIED="1628694653482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/__init___py$main.coverage" NAME="main 覆盖结果" MODIFIED="1628780105563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main 覆盖结果" MODIFIED="1628610446836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$tools__1_.coverage" NAME="tools (1) 覆盖结果" MODIFIED="1628508562830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
   </component>

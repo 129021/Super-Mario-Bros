@@ -1,6 +1,8 @@
 import pygame
 from .. import constants as C
 from . import coin
+from ..import setup,tools
+pygame.font.init()
 
 
 pygame.font.init()
@@ -20,7 +22,11 @@ class Info:
             self.state_labels.append((self.create_label('2 PLAYER GAME'),(272,405)))
             self.state_labels.append((self.create_label('TOP = '),(290,465)))
             self.state_labels.append((self.create_label('000000'),(400,465)))
-
+        elif self.state=='load_screen':
+            self.state_labels.append((self.create_label('WORLD'),(280,200)))
+            self.state_labels.append((self.create_label('1 - 1'),(430, 200)))
+            self.state_labels.append((self.create_label('x   3'),(380, 280)))
+            self.player_image=tools.get_image(setup.GRAPHICS['mario_bros'],178,32,12,16,(0,0,0),C.BG_MULTI)
     def create_info_labels(self):
         self.info_labels=[]
         self.info_labels.append((self.create_label('MARIO'),(75,30)))
@@ -47,4 +53,7 @@ class Info:
         for label in self.info_labels:
             surface.blit(label[0],label[1])
         surface.blit(self.flash_coin.image,self.flash_coin.rect)
+
+        if self.state=='load_screen':
+            surface.blit(self.player_image,(300,270))
 
