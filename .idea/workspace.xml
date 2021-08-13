@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment="add main role module：player">
+    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment="add walk and stand states :make mario walking or standing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/components/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/components/player.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/states/level.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/states/level.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +208,7 @@
       <workItem from="1628680095342" duration="3422000" />
       <workItem from="1628691821580" duration="2919000" />
       <workItem from="1628768112497" duration="5142000" />
-      <workItem from="1628852954110" duration="6214000" />
+      <workItem from="1628852954110" duration="6426000" />
     </task>
     <task id="LOCAL-00001" summary="add some constants">
       <created>1628424675701</created>
@@ -290,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628780330512</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add walk and stand states :make mario walking or standing">
+      <created>1628868770422</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1628868770422</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +325,8 @@
     <MESSAGE value="make the cursor moving" />
     <MESSAGE value="add two new state" />
     <MESSAGE value="add main role module：player" />
-    <option name="LAST_COMMIT_MESSAGE" value="add main role module：player" />
+    <MESSAGE value="add walk and stand states :make mario walking or standing" />
+    <option name="LAST_COMMIT_MESSAGE" value="add walk and stand states :make mario walking or standing" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/main_py$tools.coverage" NAME="tools 覆盖结果" MODIFIED="1628436392104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/resources/source" />
