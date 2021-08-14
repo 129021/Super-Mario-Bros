@@ -44,6 +44,7 @@ class Player(pygame.sprite.Sprite):
         self.run_accel=speed['run_accel']
         self.turn_accel=speed['turn_accel']
         self.gravity=C.GRAVITY
+        self.anti_gravity=C.ANTI_GRAVITY
 
         self.max_xvel=self.max_walk_vel
         self.x_accel=self.walk_accel
@@ -131,14 +132,18 @@ class Player(pygame.sprite.Sprite):
 
 
     def walk(self,keys):
-        self.max_x_vel=self.max_walk_vel
-        self.x_accel=self.walk_accel
-        if self.current_time-self.walking_timer>100:
+        if keys[pygame.K_s]:
+            self.max_x_vel=self.max_run_vel
+            self.x_accel=self.run_accel
+        else:
+            self.max_x_vel=self.max_walk_vel
+            self.x_accel=self.walk_accel
+        if self.current_time-self.walking_timer > self.calc_frame_duration():
             if self.frame_index<3:
                 self.frame_index+=1
             else:
                 self.frame_index=1
-                self.walking_timer=self.current_time
+            self.walking_timer=self.current_time
         if keys[pygame.K_RIGHT]:
             self.face_right=True
             if self.x_vel<0:
@@ -146,7 +151,6 @@ class Player(pygame.sprite.Sprite):
                 self.x_accel=self.turn_accel
             self.x_vel=self.calc_vel(self.x_vel,self.x_accel,self.max_x_vel,True)
 
-            self.x_vel=5
         elif keys[pygame.K_LEFT]:
             self.face_right=False
             if self.x_vel>0:
@@ -179,6 +183,11 @@ class Player(pygame.sprite.Sprite):
             return min(vel+accel,max_vel)
         else:
             return max(vel-accel,-max_vel)
+
+    def calc_frame_duration(self):
+        duration=-60/self.max_run_vel*abs(self.x_vel)+80
+        return duration
+
 
 
 

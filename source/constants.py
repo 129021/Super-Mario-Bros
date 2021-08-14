@@ -4,3 +4,4 @@ BG_MULTI=2.68
 PLAYER_MULTI=2.9
 FONT='resources/fonts/Fixedsys500c.ttf'
 GRAVITY=1.0
+ANTI_GRAVITY=0.3
