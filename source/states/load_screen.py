@@ -5,6 +5,7 @@ class LoadScreen:
     def __init__(self):
         self.finished=False
         self.next='level'
+        self.duration=2000
         self.timer=0
         self.info=info.Info('load_screen')
 
@@ -20,3 +21,10 @@ class LoadScreen:
     def draw(self,surface):
         surface.fill((0,0,0))
         self.info.draw(surface)
+
+class GameOver(LoadScreen):
+    def __init__(self):
+        LoadScreen.__init__(self)
+        self.next='main_menu'
+        self.duration=4000
+        self.info=info.Info('game_over')
