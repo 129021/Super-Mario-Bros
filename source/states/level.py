@@ -3,20 +3,23 @@ import pygame
 from ..import tools,setup
 from .. import constants as C
 from .. components import player
-from .. components import player,stuff
+from .. components import player,stuff,brick
 import os
 import json
 
 class Level:
-    def __init__(self):
+    def start(self,game_info):
+        self.game_info=game_info
         self.finished=False
         self.next='game_over'
-        self.info=info.Info('level')
+        self.info=info.Info('level',self.game_info)
         self.load_map_data()
         self.setup_background()
         self.setup_start_position()
         self.setup_player()
         self.setup_ground_items()
+        self.setup_bricks()
+
 
 
     def load_map_data(self):
@@ -54,6 +57,20 @@ class Level:
             for item in self.map_data[name]:
                 self.ground_items_group.add(stuff.Item(item['x'],item['y'],item['width'],item['height'],name))
 
+    def setup_bricks(self):
+        self.brick_group=pygame.sprite.Group()
+        if 'brick' in self.map_data:
+            for brick_data in self.map_data['brick']:
+                x,y=brick_data['x'],brick_data['y']
+                brick_type=brick_data['type']
+                if 'brick_num'in brick_data:
+                    #TODO batch bricks
+                    pass
+                else:
+                    self.brick_group.add(brick.Brick(x,y,brick_type))
+
+
+
 
     def update(self,surface,keys):
         self.current_time=pygame.time.get_ticks()
@@ -61,10 +78,15 @@ class Level:
         if self.player.dead:
             if self.current_time-self.player.death_timer>3000:
                 self.finished=True
+                self.update_game_info()
         else:
             self.update_player_position()
             self.check_if_go_die()
             self.update_game_window()
+            self.info.update()
+            self.brick_group.update()
+
+
 
         self.draw(surface)
 
@@ -120,18 +142,6 @@ class Level:
             sprite.state='fall'
         sprite.rect.y-=1
 
-
-
-
-
-
-
-
-
-
-
-
-
     def update_game_window(self):
         third=self.game_window.x+self.game_window.width/3
         if self.player.x_vel>0 and self.player.rect.centerx>third:
@@ -143,7 +153,7 @@ class Level:
     def draw(self,surface):
         self.game_ground.blit(self.background,self.game_window,self.game_window)
         self.game_ground.blit(self.player.image,self.player.rect)
-
+        self.brick_group.draw(self.game_ground)
         surface.blit(self.game_ground,(0,0),self.game_window)
 
         self.info.draw(surface)
@@ -151,4 +161,13 @@ class Level:
     def check_if_go_die(self):
         if self.player.rect.y>C.SCREEN_H:
             self.player.go_die()
+
+    def update_game_info(self):
+        if self.player.dead:
+            self.game_info['lives']-=1
+        if self.game_info['lives']==0:
+            self.next='game_over'
+        else:
+            self.next='load_screen'
+
 
