@@ -3,7 +3,7 @@ import pygame
 from ..import tools,setup
 from .. import constants as C
 from .. components import player
-from .. components import player,stuff,brick
+from .. components import player,stuff,brick,box
 import os
 import json
 
@@ -18,7 +18,7 @@ class Level:
         self.setup_start_position()
         self.setup_player()
         self.setup_ground_items()
-        self.setup_bricks()
+        self.setup_bricks_and_boxes()
 
 
 
@@ -57,8 +57,9 @@ class Level:
             for item in self.map_data[name]:
                 self.ground_items_group.add(stuff.Item(item['x'],item['y'],item['width'],item['height'],name))
 
-    def setup_bricks(self):
+    def setup_bricks_and_boxes(self):
         self.brick_group=pygame.sprite.Group()
+        self.box_group=pygame.sprite.Group()
         if 'brick' in self.map_data:
             for brick_data in self.map_data['brick']:
                 x,y=brick_data['x'],brick_data['y']
@@ -68,6 +69,13 @@ class Level:
                     pass
                 else:
                     self.brick_group.add(brick.Brick(x,y,brick_type))
+
+        if 'box' in self.map_data:
+            for box_data in self.map_data['box']:
+                x,y=box_data['x'],box_data['y']
+                box_type=box_data['type']
+
+                self.box_group.add(box.Box(x,y,box_type))
 
 
 
@@ -85,6 +93,7 @@ class Level:
             self.update_game_window()
             self.info.update()
             self.brick_group.update()
+            self.box_group.update()
 
 
 
@@ -104,15 +113,18 @@ class Level:
         self.check_y_collisions()
 
     def check_x_collisions(self):
-        ground_item=pygame.sprite.spritecollideany(self.player,self.ground_items_group)
-        if ground_item:
-            self.adjust_player_x(ground_item)
+        check_group=pygame.sprite.Group(self.ground_items_group,self.brick_group,self.box_group)
+        collided_sprite=pygame.sprite.spritecollideany(self.player,check_group)
+
+        if collided_sprite:
+            self.adjust_player_x(collided_sprite)
 
 
     def check_y_collisions(self):
-        ground_item=pygame.sprite.spritecollideany(self.player,self.ground_items_group)
-        if ground_item:
-            self.adjust_player_y(ground_item)
+        check_group = pygame.sprite.Group(self.ground_items_group, self.brick_group,self.box_group)
+        collided_sprite = pygame.sprite.spritecollideany(self.player, check_group)
+        if collided_sprite:
+            self.adjust_player_y(collided_sprite)
         self.check_will_fall(self.player)
 
     def adjust_player_x(self,sprite):
@@ -136,9 +148,9 @@ class Level:
 
     def check_will_fall(self,sprite):
         sprite.rect.y+=1
-        check_group=pygame.sprite.Group(self.ground_items_group)
-        collided=pygame.sprite.spritecollideany(sprite,check_group)
-        if not collided and sprite.state!='jump':
+        check_group=pygame.sprite.Group(self.ground_items_group,self.brick_group,self.box_group)
+        collided_sprite=pygame.sprite.spritecollideany(sprite,check_group)
+        if not collided_sprite and sprite.state!='jump':
             sprite.state='fall'
         sprite.rect.y-=1
 
@@ -154,6 +166,7 @@ class Level:
         self.game_ground.blit(self.background,self.game_window,self.game_window)
         self.game_ground.blit(self.player.image,self.player.rect)
         self.brick_group.draw(self.game_ground)
+        self.box_group.draw(self.game_ground)
         surface.blit(self.game_ground,(0,0),self.game_window)
 
         self.info.draw(surface)

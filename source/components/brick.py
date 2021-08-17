@@ -3,7 +3,7 @@ from .. import tools,setup
 from ..import constants as C
 
 
-class Brick:
+class Brick(pygame.sprite.Sprite):
     def __init__(self,x,y,brick_type,color=None):
         pygame.sprite.Sprite.__init__(self)
         self.x=x
@@ -19,7 +19,7 @@ class Brick:
             self.frame_rects=dark_rect_frames
         self.frames=[]
         for frame_rect in self.frame_rects:
-            self.frames.append(tools.get_image(setup.GRAPHICS['tile_set'],*frame_rect,(0,0,0),C.BG_MULTI))
+            self.frames.append(tools.get_image(setup.GRAPHICS['tile_set'],*frame_rect,(0,0,0),C.BRICK_MULTI))
         self.frame_index=0
         self.image=self.frames[self.frame_index]
         self.rect=self.image.get_rect()
