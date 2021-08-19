@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment="add bricks and boxes">
+    <list default="true" id="5c9369ec-dce6-4c09-9694-46107400a706" name="更改" comment="add enemies &#10;bug:Goomba(mashroom man)'s color is wrong,need to fix it next time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/components/anamy.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/components/enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/components/brick.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/components/brick.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/components/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/components/enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/components/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/components/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/components/stuff.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/components/stuff.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/data/maps/level_1.json" beforeDir="false" afterPath="$PROJECT_DIR$/source/data/maps/level_1.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/states/level.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/states/level.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="aDefault" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -221,7 +221,8 @@
       <workItem from="1629003193577" duration="3402000" />
       <workItem from="1629112181118" duration="3094000" />
       <workItem from="1629198982645" duration="2124000" />
-      <workItem from="1629272608826" duration="5618000" />
+      <workItem from="1629272608826" duration="5954000" />
+      <workItem from="1629378022231" duration="3050000" />
     </task>
     <task id="LOCAL-00001" summary="add some constants">
       <created>1628424675701</created>
@@ -349,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629201113009</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="add enemies &#10;bug:Goomba(mashroom man)'s color is wrong,need to fix it next time">
+      <created>1629297785740</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1629297785740</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +393,8 @@
     <MESSAGE value="Add impact checking" />
     <MESSAGE value="add bricks" />
     <MESSAGE value="add bricks and boxes" />
-    <option name="LAST_COMMIT_MESSAGE" value="add bricks and boxes" />
+    <MESSAGE value="add enemies &#10;bug:Goomba(mashroom man)'s color is wrong,need to fix it next time" />
+    <option name="LAST_COMMIT_MESSAGE" value="add enemies &#10;bug:Goomba(mashroom man)'s color is wrong,need to fix it next time" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/main_py$tools.coverage" NAME="tools 覆盖结果" MODIFIED="1628436392104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/resources/source" />
@@ -393,7 +402,7 @@
     <SUITE FILE_PATH="coverage/main_py$info.coverage" NAME="info 覆盖结果" MODIFIED="1628609927757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source/components" />
     <SUITE FILE_PATH="coverage/main_py$sound.coverage" NAME="sound 覆盖结果" MODIFIED="1628437336596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
     <SUITE FILE_PATH="coverage/main_py$setup.coverage" NAME="setup 覆盖结果" MODIFIED="1628437356610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />
-    <SUITE FILE_PATH="coverage/__init___py$main.coverage" NAME="main 覆盖结果" MODIFIED="1629297361031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/__init___py$main.coverage" NAME="main 覆盖结果" MODIFIED="1629381096008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main 覆盖结果" MODIFIED="1628610446836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/__init___py$player.coverage" NAME="player 覆盖结果" MODIFIED="1628997827151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source/components" />
     <SUITE FILE_PATH="coverage/main_py$tools__1_.coverage" NAME="tools (1) 覆盖结果" MODIFIED="1628508562830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/source" />

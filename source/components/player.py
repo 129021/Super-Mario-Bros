@@ -119,8 +119,8 @@ class Player(pygame.sprite.Sprite):
             self.jump(keys)
         elif self.state=='fall':
             self.fall(keys)
-        elif self.state=='basketball':
-            self.play_basketball(keys)
+        elif self.state=='die':
+            self.die(keys)
 
         if self.face_right:
             self.image=self.right_frames[self.frame_index]
