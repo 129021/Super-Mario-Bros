@@ -58,6 +58,8 @@ class Enemy(pygame.sprite.Sprite):
             self.die()
         elif self.state=='trampled':
             self.trampled()
+        elif self.state=='slide':
+            self.slide()
 
 
         if self.direction:
@@ -75,18 +77,38 @@ class Enemy(pygame.sprite.Sprite):
         if self.y_vel<10:
             self.y_vel+=self.gravity
 
+    def die(self):
+        self.rect.x+=self.x_vel
+        self.rect.y+=self.y_vel
+        self.y_vel+=self.gravity
+        if self.rect.y>C.SCREEN_H:
+            self.kill()
+
+
+    def trampled(self):
+        pass
+
+    def slide(self):
+        pass
+
 
     def update_position(self,level):
         self.rect.x+=self.x_vel
         self.check_x_collisions(level)
         self.rect.y+=self.y_vel
-        self.check_y_collisions(level)
+        if self.state!='die':
+            self.check_y_collisions(level)
 
 
     def check_x_collisions(self,level):
         sprite=pygame.sprite.spritecollideany(self,level.ground_items_group)
         if sprite:
-            self.direction=1 if self.direction==0 else 0
+            if self.direction:#向右
+                self.direction=0
+                self.rect.right=sprite.rect.left
+            else:
+                self.direction=1
+                self.rect.left=sprite.rect.right
             self.x_vel*=-1
 
     def check_y_collisions(self,level):
@@ -100,6 +122,17 @@ class Enemy(pygame.sprite.Sprite):
 
 
         level.check_will_fall(self)
+
+    def go_die(self,how):
+        self.death_timer=self.current_time
+        if how=='humped':
+            self.y_vel=-8
+            self.gravity=0.6
+            self.state='die'
+            self.frame_index=0
+        elif how=='trampled':
+            self.state='trampled'
+
 
 
 
@@ -116,6 +149,15 @@ class Goomba(Enemy):
 
         Enemy.__init__(self,x,y_bottom,direction,name,frame_rects)
 
+    def trampled(self):
+        self.x_vel=0
+        self.frame_index=2
+        if self.death_timer==0:
+            self.death_timer=self.current_time
+        if self.current_time-self.death_timer>500:
+            self.kill()
+
+
 
 class Koopa(Enemy):
     def __init__(self, x,y_bottom, direction, name, color):
@@ -128,3 +170,10 @@ class Koopa(Enemy):
             frame_rects = dark_frame_rects
 
         Enemy.__init__(self,x, y_bottom, direction, name, frame_rects)
+
+    def trampled(self):
+        self.x_vel=0
+        self.frame_index=2
+
+    def slide(self):
+        pass
