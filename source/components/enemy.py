@@ -187,7 +187,7 @@ class Koopa(Enemy):
 
         if self.shell_timer==0:
             self.shell_timer=self.current_time
-        if self.current_time-self.shell_timer>10000:
+        if self.current_time-self.shell_timer>5000:
             self.state='walk'
             self.x_vel= -C.ENEMY_SPEED if self.direction==0 else C.ENEMY_SPEED
             level.enemy_group.add(self)

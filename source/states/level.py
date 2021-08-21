@@ -64,22 +64,35 @@ class Level:
     def setup_bricks_and_boxes(self):
         self.brick_group=pygame.sprite.Group()
         self.box_group=pygame.sprite.Group()
+        self.coin_group=pygame.sprite.Group()
+        self.powerup_group=pygame.sprite.Group()
+
         if 'brick' in self.map_data:
             for brick_data in self.map_data['brick']:
                 x,y=brick_data['x'],brick_data['y']
                 brick_type=brick_data['type']
-                if 'brick_num'in brick_data:
-                    #TODO batch bricks
-                    pass
+                if brick_type==0:
+                    if 'brick_num'in brick_data:
+                        #TODO batch bricks
+                        pass
+                    else:
+                        self.brick_group.add(brick.Brick(x,y,brick_type,None))
+                elif brick_type==1:
+                    self.brick_group.add(brick.Brick(x,y,brick_type,self.coin_group))
                 else:
-                    self.brick_group.add(brick.Brick(x,y,brick_type))
+                    self.brick_group.add(brick.Brick(x,y,brick_type,self.powerup_group))
+
+
 
         if 'box' in self.map_data:
             for box_data in self.map_data['box']:
                 x,y=box_data['x'],box_data['y']
                 box_type=box_data['type']
 
-                self.box_group.add(box.Box(x,y,box_type))
+                if box_type==1:
+                    self.box_group.ass(box.Box(x,y,box_type,self.coin_group))
+                else:
+                    self.box_group.add(box.Box(x,y,box_type,self.powerup_group))
 
 
     def setup_enemies(self):
@@ -124,6 +137,8 @@ class Level:
             self.enemy_group.update(self)
             self.dying_group.update(self)
             self.shell_group.update(self)
+            self.coin_group.update()
+            self.powerup_group.update()
 
 
 
@@ -173,13 +188,35 @@ class Level:
 
 
     def check_y_collisions(self):
-        check_group = pygame.sprite.Group(self.ground_items_group, self.brick_group,self.box_group)
-        collided_sprite = pygame.sprite.spritecollideany(self.player, check_group)
-        if collided_sprite:
-            self.adjust_player_y(collided_sprite)
-
+        #check_group = pygame.sprite.Group(self.ground_items_group, self.brick_group,self.box_group)\
+        ground_item=pygame.sprite.spritecollideany(self.player,self.ground_items_group)
+        brick=pygame.sprite.spritecollideany(self.player,self.brick_group)
+        box=pygame.sprite.spritecollideany(self.player,self.box_group)
         enemy=pygame.sprite.spritecollideany(self.player,self.enemy_group)
-        if enemy:
+
+        #collided_sprite = pygame.sprite.spritecollideany(self.player, check_group)
+        # if collided_sprite:
+        #     self.adjust_player_y(collided_sprite)
+
+        #enemy=pygame.sprite.spritecollideany(self.player,self.enemy_group)
+
+        if brick and box:
+            to_brick=abs(self.player.rect.centerx-brick.rect.centerx)
+            to_box=abs(self.player.rect.centerx-box.rect.centerx)
+            if to_brick>to_box:
+                brick=None
+            else:
+                box=None
+
+
+        if ground_item:
+            self.adjust_player_y(ground_item)
+        elif brick:
+            self.adjust_player_y(brick)
+        elif box:
+            self.adjust_player_y(box)
+
+        elif enemy:
             self.enemy_group.remove(enemy)
             if enemy.name=='koopa':
                 self.shell_group.add(enemy)
@@ -216,6 +253,17 @@ class Level:
             self.player.rect.top=sprite.rect.bottom
             self.player.state='fall'
 
+            if sprite.name=='box':
+                if sprite.state=='rest':
+                    sprite.go_bumped()
+
+            if sprite.name=='brick':
+                if sprite.state=='rest':
+                    sprite.go_bumped()
+
+
+
+
     def check_will_fall(self,sprite):
         sprite.rect.y+=1
         check_group=pygame.sprite.Group(self.ground_items_group,self.brick_group,self.box_group)
@@ -240,6 +288,9 @@ class Level:
         self.enemy_group.draw(self.game_ground)
         self.dying_group.draw(self.game_ground)
         self.shell_group.draw(self.game_ground)
+        self.coin_group.draw(self.game_ground)
+        self.powerup_group.draw(self.game_ground)
+
 
 
         surface.blit(self.game_ground,(0,0),self.game_window)
