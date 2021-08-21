@@ -158,15 +158,18 @@ class Level:
 
         shell=pygame.sprite.spritecollideany(self.player,self.shell_group)
         if shell:
-            if shell.player.rect.x<shell.rect.x:
-                shell.x_vel=10
-                shell.rect.x+=40
-                shell.direction=1
+            if shell.state=='slide':
+                self.player.go_die()
             else:
-                shell.x_vel=-10
-                shell.rect.x-=40
-                shell.direction=0
-            shell.state='slide'
+                if self.player.rect.x<shell.rect.x:
+                    shell.x_vel=10
+                    shell.rect.x+=40
+                    shell.direction=1
+                else:
+                    shell.x_vel=-10
+                    shell.rect.x-=40
+                    shell.direction=0
+                shell.state='slide'
 
 
     def check_y_collisions(self):

@@ -26,3 +26,36 @@ class Box(pygame.sprite.Sprite):
         self.rect.x=self.x
         self.rect.y=self.y
 
+        self.state='rest'
+        self.timer=0
+
+    def update(self):
+        self.current_time=pygame.time.get_ticks()
+        self.handle_states()
+
+    def handle_states(self):
+        if self.state=='rest':
+            self.rest()
+        elif self.state=='bumped':
+            self.bumped()
+        elif self.state=='open':
+            self.open()
+
+    def rest(self):
+        frame_durations=[400,100,100,50]
+        if self.current_time-self.timer>frame_durations[self.frame_index]:
+            self.frame_index=(self.frame_index+1)%4
+            self.timer=self.current_time
+        self.image=self.frames[self.frame_index]
+
+
+
+
+    def bumped(self):
+        pass
+
+    def open(self):
+        pass
+
+
+
