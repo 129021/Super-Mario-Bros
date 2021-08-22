@@ -4,7 +4,7 @@ from.. import constants as C
 
 def create_powerup(centerx,centery,type):
     '''create powerup based on type and mario state'''
-    return Mushroom(centerx,centery)
+    return Fireflower(centerx,centery)
 
 
 
@@ -77,20 +77,111 @@ class Mushroom(Powerup):
             if self.rect.bottom<self.origin_y:
                 self.state='walk'
 
-        if self.state=='walk':
+        elif self.state=='walk':
             pass
-        if self.state=='fall':
+        elif self.state=='fall':
             if self.y_vel<self.max_y_vel:
                 self.y_vel+=self.gravity
         if self.state!='grow':
             self.update_position(level)
 
+class Fireflower(Powerup):
+    def __init__(self,centerx,centery):
+        frame_rects=[(0,32,16,16),(16,32,16,16),(32,32,16,16),(48,32,16,16)]
+
+        Powerup.__init__(self,centerx,centery,frame_rects)
+        self.x_vel=2
+        self.state='grow'
+        self.name='fireflower'
+        self.timer=0
+
+
+    def update(self,level):
+        if self.state=='grow':
+            self.rect.y+=self.y_vel
+            if self.rect.bottom<self.origin_y:
+                self.state='rest'
+        self.current_time=pygame.time.get_ticks()
+
+        if self.timer==0:
+            self.timer=self.current_time
+        if self.current_time-self.timer>30:
+            self.frame_index+=1
+            self.frame_index%=len(self.frames)
+            self.timer=self.current_time
+            self.image=self.frames[self.frame_index]
+
+
 
 class Fireball(Powerup):
-    pass
+    def __init__(self,centerx,centery,direction):
+        frame_rects=[(96,144,8,8),(104,144,8,8),(96,152,8,8),(104,152,8,8),#旋转
+                     (122,144,16,16),(112,160,16,16),(112,176,16,16)] #爆炸
+        Powerup.__init__(self,centerx,centery,frame_rects)
+        self.name='fireball'
+        self.state='fly'
+        self.direction=direction
+        self.x_vel=10 if self.direction else -10
+        self.y_vel=10
+        self.gravity=1
+        self.timer=0
+
+    def update(self,level):
+        self.current_time=pygame.time.get_ticks()
+        if self.state=='fly':
+            self.y_vel+=self.gravity
+            if self.current_time-self.timer>200:
+                self.frame_index+=1
+                self.frame_index%=4
+                self.timer=self.current_time
+                self.image=self.frames[self.frame_index]
+            self.update_position(level)
+        elif self.state=='boom':
+            if self.current_time-self.timer>50:
+                if self.frame_index<6:
+                    self.frame_index+=1
+                    self.timer=self.current_time
+                    self.image=self.frames[self.frame_index]
+                else:
+                    self.kill()
+
+    def update_position(self, level):
+        self.rect.x+=self.x_vel
+        self.check_x_collisions(level)
+        self.rect.y+=self.y_vel
+        self.check_y_collisions(level)
+
+        if self.rect.x<0 or self.rect.y>C.SCREEN_H:
+            self.kill()
+
+
+
+    def check_x_collisions(self, level):
+        sprite = pygame.sprite.spritecollideany(self, level.ground_items_group)
+        if sprite:
+            self.frame_index=4
+            self.state='boom'
+
+
+
+
+    def check_y_collisions(self, level):
+        check_group = pygame.sprite.Group(level.ground_items_group, level.box_group, level.brick_group)
+        sprite = pygame.sprite.spritecollideany(self, check_group)
+        if sprite:
+            if self.rect.top < sprite.rect.top:
+                self.rect.bottom = sprite.rect.top
+                self.y_vel = -10
+
+
+
+
 
 class LifeMushroom(Powerup):
     pass
 
 class Star(Powerup):
     pass
+
+
+

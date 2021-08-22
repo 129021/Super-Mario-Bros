@@ -91,7 +91,7 @@ class Brick(pygame.sprite.Sprite):
 class Debris(pygame.sprite.Sprite):
     def __init__(self,x,y,x_vel,y_vel):
         pygame.sprite.Sprite.__init__(self)
-        self.image=tools.get_image(setup.GRAPHICS['tiKKle_set'],68,20,8,8,(0,0,0),C.BRICK_MULTI)
+        self.image=tools.get_image(setup.GRAPHICS['tile_set'],68,20,8,8,(0,0,0),C.BRICK_MULTI)
         self.rect=self.image.get_rect()
         self.rect.x=x
         self.rect.y=y
