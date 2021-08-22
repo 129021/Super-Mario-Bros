@@ -30,6 +30,7 @@ class Player(pygame.sprite.Sprite):
         self.dead=False
         self.big=False
         self.can_jump=True
+        self.hurt_immune=False
 
 
     def setup_velocities(self):
@@ -55,6 +56,8 @@ class Player(pygame.sprite.Sprite):
         self.walking_timer=0
         self.transition_timer=0
         self.death_timer=0
+        self.hurt_immune_timer=0
+
 
 
     def load_images(self):
@@ -106,6 +109,8 @@ class Player(pygame.sprite.Sprite):
     def update(self,keys):
         self.current_time=pygame.time.get_ticks()
         self.handle_states(keys)
+        self.is_hurt_immune()
+
 
     def handle_states(self,keys):
 
@@ -121,6 +126,12 @@ class Player(pygame.sprite.Sprite):
             self.fall(keys)
         elif self.state=='die':
             self.die(keys)
+        elif self.state=='small2big':
+            self.small2big(keys)
+        elif self.state=='big2small':
+            self.big2small(keys)
+
+
 
         if self.face_right:
             self.image=self.right_frames[self.frame_index]
@@ -227,6 +238,61 @@ class Player(pygame.sprite.Sprite):
         self.state='die'
         self.death_timer=self.current_time
 
+    def small2big(self,keys):
+        frame_dur=65
+        sizes=[1,0,1,0,1,2,0,1,2,0,2] #0 small 1mid 2 big
+        frames_and_idx=[(self.small_normal_frames,0),(self.small_normal_frames,7),(self.big_normal_frames,0)]
+        if self.transition_timer==0:
+            self.big=True
+            self.transition_timer=self.current_time
+            self.changing_idx=0
+        elif self.current_time-self.transition_timer>frame_dur:
+            self.transition_timer=self.current_time
+            frames, idx = frames_and_idx[sizes[self.changing_idx]]
+            self.change_player_image(frames,idx)
+            self.changing_idx += 1
+            if self.changing_idx==len(sizes):
+                self.transition_timer=0
+                self.state='walk'
+                self.right_frames=self.right_big_normal_frames
+                self.left_frames=self.left_big_normal_frames
+
+    def big2small(self,keys):
+        frame_dur = 65
+        sizes = [2,1,0,1,0,1,0,1,0,1,0]  # 0 small 1mid 2 big
+        frames_and_idx = [(self.small_normal_frames, 8), (self.small_normal_frames,8), (self.big_normal_frames, 4)]
+        if self.transition_timer == 0:
+            self.big = False
+            self.transition_timer = self.current_time
+            self.changing_idx = 0
+        elif self.current_time - self.transition_timer > frame_dur:
+            self.transition_timer = self.current_time
+            frames, idx = frames_and_idx[sizes[self.changing_idx]]
+            self.change_player_image(frames, idx)
+            self.changing_idx += 1
+            if self.changing_idx == len(sizes):
+                self.transition_timer = 0
+                self.state = 'walk'
+                self.right_frames = self.right_small_normal_frames
+                self.left_frames = self.left_small_normal_frames
+
+
+    def change_player_image(self,frames,idx):
+        self.frame_index=idx
+        if self.face_right:
+            self.right_frames=frames[0]
+            self.image=self.right_frames[self.frame_index]
+        else:
+            self.left_frames=frames[1]
+            self.image=self.left_frames[self.frame_index]
+        last_frame_bottom=self.rect.bottom
+        last_frame_centerx=self.rect.centerx
+        self.rect=self.image.get_rect()
+        self.rect.bottom=last_frame_bottom
+        self.rect.centerx=last_frame_centerx
+
+
+
     def calc_vel(self,vel,accel,max_vel,is_positive=True):
         if is_positive:
             return min(vel+accel,max_vel)
@@ -236,6 +302,22 @@ class Player(pygame.sprite.Sprite):
     def calc_frame_duration(self):
         duration=-60/self.max_run_vel*abs(self.x_vel)+80
         return duration
+
+    def is_hurt_immune(self):
+        if self.hurt_immune:
+            if self.hurt_immune_timer==0:
+                self.hurt_immune_timer=self.current_time
+                self.blank_image=pygame.Surface((1,1))
+            elif self.current_time-self.hurt_immune_timer<3000:
+                if (self.current_time-self.hurt_immune_timer)%100<50:
+                    self.image=self.blank_image
+
+            else:
+                self.hurt_immune=False
+                self.hurt_immune_timer=0
+
+
+
 
 
 

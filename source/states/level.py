@@ -90,7 +90,7 @@ class Level:
                 box_type=box_data['type']
 
                 if box_type==1:
-                    self.box_group.ass(box.Box(x,y,box_type,self.coin_group))
+                    self.box_group.add(box.Box(x,y,box_type,self.coin_group))
                 else:
                     self.box_group.add(box.Box(x,y,box_type,self.powerup_group))
 
@@ -126,6 +126,9 @@ class Level:
             if self.current_time-self.player.death_timer>3000:
                 self.finished=True
                 self.update_game_info()
+        elif self.is_frozen():
+            pass
+
         else:
             self.update_player_position()
             self.check_checkpoints()
@@ -138,13 +141,13 @@ class Level:
             self.dying_group.update(self)
             self.shell_group.update(self)
             self.coin_group.update()
-            self.powerup_group.update()
-
-
-
-
+            self.powerup_group.update(self)
 
         self.draw(surface)
+
+    def is_frozen(self):
+        return self.player.state in ['small2big','big2small','big2fire','fire2small']
+
 
     def update_player_position(self):
         #x direction
@@ -167,9 +170,17 @@ class Level:
         if collided_sprite:
             self.adjust_player_x(collided_sprite)
 
+        if self.player.hurt_immune:
+            return
+
         enemy = pygame.sprite.spritecollideany(self.player, self.enemy_group)
         if enemy:
-            self.player.go_die()
+
+            if self.player.big:
+                self.player.state='big2small'
+                self.player.hurt_immune=True
+            else:
+                self.player.go_die()
 
         shell=pygame.sprite.spritecollideany(self.player,self.shell_group)
         if shell:
@@ -185,6 +196,13 @@ class Level:
                     shell.rect.x-=40
                     shell.direction=0
                 shell.state='slide'
+
+        powerup=pygame.sprite.spritecollideany(self.player,self.powerup_group)
+        if powerup:
+            powerup.kill()
+            if powerup.name=='mushroom':
+                self.player.state='small2big'
+
 
 
     def check_y_collisions(self):
@@ -217,6 +235,8 @@ class Level:
             self.adjust_player_y(box)
 
         elif enemy:
+            if self.player.hurt_immune:
+                return
             self.enemy_group.remove(enemy)
             if enemy.name=='koopa':
                 self.shell_group.add(enemy)
@@ -258,7 +278,9 @@ class Level:
                     sprite.go_bumped()
 
             if sprite.name=='brick':
-                if sprite.state=='rest':
+                if self.player.big and sprite.brick_type==0: #when mario is big and brick contains nothing
+                    sprite.smashed(self.dying_group)
+                else:
                     sprite.go_bumped()
 
 
@@ -268,7 +290,7 @@ class Level:
         sprite.rect.y+=1
         check_group=pygame.sprite.Group(self.ground_items_group,self.brick_group,self.box_group)
         collided_sprite=pygame.sprite.spritecollideany(sprite,check_group)
-        if not collided_sprite and sprite.state!='jump':
+        if not collided_sprite and sprite.state!='jump'and not self.is_frozen():
             sprite.state='fall'
         sprite.rect.y-=1
 
@@ -283,13 +305,14 @@ class Level:
     def draw(self,surface):
         self.game_ground.blit(self.background,self.game_window,self.game_window)
         self.game_ground.blit(self.player.image,self.player.rect)
+        self.powerup_group.draw(self.game_ground)
         self.brick_group.draw(self.game_ground)
         self.box_group.draw(self.game_ground)
         self.enemy_group.draw(self.game_ground)
         self.dying_group.draw(self.game_ground)
         self.shell_group.draw(self.game_ground)
         self.coin_group.draw(self.game_ground)
-        self.powerup_group.draw(self.game_ground)
+
 
 
 
